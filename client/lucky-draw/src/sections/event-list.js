@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
+import PresentEventCard from '../components/PresentEventCard'
+import PastEventCard from '../components/PastEventCard'
 
 function EventList() {
   const [presentEvents, setPresentEvents] = React.useState([]);
@@ -65,19 +67,7 @@ function EventList() {
       </div>
       {presentEvents.slice(0, slicePresentEvents).map((e) => (
           <div className="present-event-container">
-            <div>
-              {e.Name}
-            </div>
-            <div>
-              <span>{e.StartTime}</span>
-              <span>{e.EndTime}</span>
-            </div>
-            <div>
-              <span>{e.FirstPrize}</span>
-              <span>{e.SecondPrize}</span>
-              <span>{e.ThirdPrize}</span>
-            </div>
-            
+            <PresentEventCard data={e} />
           </div>
       ))}
       <div>
@@ -88,18 +78,7 @@ function EventList() {
       </div>
       {pastEvents.slice(0, 10).map((e) => (
           <div className="present-event-container">
-            <div>
-              {e.Name}
-            </div>
-            <div>
-              <span>{e.StartTime}</span>
-              <span>{e.EndTime}</span>
-            </div>
-            <div>
-              <span>{e.FirstPrize}</span>
-              <span>{e.SecondPrize}</span>
-              <span>{e.ThirdPrize}</span>
-            </div>
+            <PastEventCard data={e} />
           </div>
       ))}
       <div>

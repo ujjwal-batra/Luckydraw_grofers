@@ -28,29 +28,6 @@ function PurchasePage() {
               alert("Message Failed");
             }
         });
-        // const requestOptions = {
-        //     method: "POST",
-        //     headers: {
-        //     "Content-Type": "application/json; charset=utf-8",
-        //     },
-        //     body: JSON.stringify(details),
-        // };
-        // try {
-        //     fetch("http://localhost:3000/purchase", requestOptions).then(
-        //         async (response) => {
-        //             const data = await response.json();
-        //             console.log(data)
-        //             // check for error response
-        //             // if (!response.ok) {
-        //             //     // get error message from body or default to response status
-        //             //     const error = (data && data.message) || response.status;
-        //             //     console.log(error);
-        //             // } else alert(response);
-        //         }
-        //     );
-        // } catch (err) {
-        //     alert(err); // Failed to fetch
-        // }
     };
 
     return (

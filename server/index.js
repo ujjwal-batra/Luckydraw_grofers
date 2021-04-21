@@ -1,3 +1,4 @@
+const { time } = require('console');
 var express = require('express');
 var fs = require("fs");
 var mysql = require('mysql2');
@@ -16,6 +17,11 @@ con.connect(function(err) {
    else
       console.log("Connected To database!");
  });
+
+ app.use(express.urlencoded());
+
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
 // let i = 0, j = 1, k = 1;
 // fs.createReadStream("../fake_data_event.csv")
 // .pipe(csv())
@@ -58,6 +64,27 @@ app.get('/past-events', function (req, res) {
    
       console.log('Last insert ID:', data);
       res.send(data);
+   });
+})
+
+app.post('/purchase', function (req, res) {
+   console.log(Object.keys(req.body)[0]);
+   var timestamp = Date.now()
+   var user_id;
+   let user_query = "SELECT * FROM users WHERE Name = '" +  Object.keys(req.body)[0] + "';";
+
+   con.query(user_query, (err, data) => {
+      if(err) throw err;
+      user_id = data[0].ID;
+      console.log(timestamp)
+      console.log( data[0].ID);
+      let ticket_query = "INSERT INTO tickets (TicketID, UserID) VALUES ('"+user_id+"', '"+timestamp+"');";
+      con.query(ticket_query, (err, data) => {
+         if(err) throw err;
+      
+         console.log('Last insert ID:', data);
+         res.send("sent");
+      });
    });
 })
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
-function App() {
+function PresentEcentCard() {
   return (
     <div className="">
 
@@ -10,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default PresentEcentCard;

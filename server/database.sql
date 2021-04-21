@@ -173,4 +173,8 @@ CREATE TABLE luckydraw_winners (
     ThirdPlace int(10)
 );
 
--- 
+-- LuckyDraw ticket database
+CREATE TABLE tickets (
+    TicketID int(10) NOT NULL,
+    UserID int(10)
+);

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
+import React from "react";
 import axios from "axios";
 
 function PresentEcentCard(eventData) {
@@ -11,6 +9,7 @@ function PresentEcentCard(eventData) {
       console.log(e.target.value);
   };
 
+  // post request to participate in event
   const onClickParticipate = (e) => {
       const details = {
         Name : username,
@@ -25,14 +24,7 @@ function PresentEcentCard(eventData) {
           },
           data: JSON.stringify(details)
         }).then((response) => {
-          console.log(response)
-          if (response.data === "sent") {
-            alert("Participated in the LuckyDraw ID : " + e);
-          } else if (response.data === "noTicket") {
-            alert("Failed to participate");
-          } else if(response.data === "participated"){
-            alert("already participated");
-          }
+          alert(response.data);
       });
   }
 

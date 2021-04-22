@@ -18,6 +18,7 @@ function EventList() {
     setSlicePastEvents(slicePastEvents + 12);
   }
 
+  // to fetch present, upcoming and past events from the database
   React.useEffect(() => {
     let link = "http://localhost:3000/present-events"
     try {

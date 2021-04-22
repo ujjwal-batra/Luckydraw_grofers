@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <Route path="/events" exact render={(props) => <EventPage />} />
-      {/* <Route path="/login" exact render={(props) => <Login />} /> */}
       <Route path="/purchase" exact render={(props) => <PurchasePage />} />
     </div>
   );

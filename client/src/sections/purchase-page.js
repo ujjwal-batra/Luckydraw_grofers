@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 function PurchasePage() {
     const [username, setUsername] = React.useState("");
 
+    // function to check for username input
     const onChangeUsername = (e) => {
         setUsername(e.target.value);
         console.log(e.target.value);
     };
 
+    // function to post call the purchase api
     const onSubmitPurchase = () => {
         const details = {
             userName: username
@@ -21,12 +22,7 @@ function PurchasePage() {
             url: "http://localhost:3000/purchase",
             data: username
           }).then((response) => {
-            console.log(response)
-            if (response.data === "sent") {
-              alert("Message Sent");
-            } else if (response.data.status === "") {
-              alert("Message Failed");
-            }
+                alert(response.data);
         });
     };
 
@@ -43,9 +39,14 @@ function PurchasePage() {
                 <input
                     className="submitSignupInput"
                     type="submit"
-                    placeholder="Buy this product"
+                    value="Buy this product"
                     onClick={onSubmitPurchase}
                 />
+            </div>
+            <div>
+                <Link className="purchase-page-link" to="/events">
+                    Try participating in Lucky-draw
+                </Link>
             </div>
         </div>
     );

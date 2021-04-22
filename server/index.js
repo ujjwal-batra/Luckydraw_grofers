@@ -1,8 +1,6 @@
-const { time } = require('console');
 var express = require('express');
-var fs = require("fs");
 var mysql = require('mysql2');
-const cron = require('node-cron');
+var cron = require('node-cron');
 var async = require('async');
 
 // app inialization
@@ -26,15 +24,16 @@ con.connect(function(err) {
       console.log("Connected To database!");
 });
 
+// winner declaraion every 1 minute can be changed to different timing
 cron.schedule('0 * * * * *', function() {
+   // query for all the ended events
    var winner_query = "SELECT * FROM luckydraw_event WHERE TIMEDIFF( EndTime, NOW()) <= 0"
    con.query(winner_query, (err, data) => {
       if(err) throw err;
 
-      console.log(data[0])
       async.each(data, function (row, callback) {
          var eventId = row.ID
-         console.log(eventId);
+         // query or all the tickets used for a particular event
          var find_tickets_query = "SELECT * FROM tickets WHERE EventId = '"+eventId+"' and IsUsed = 1"
          con.query(find_tickets_query, (err, rows) => {
             if(err) throw err;
@@ -43,13 +42,15 @@ cron.schedule('0 * * * * *', function() {
                console.log("Lack of participation No winner");
             }
             else{
+               // choosing the winner
                var user_ids = [];
                for(let j=0; j<rows.length; j++){
                   user_ids.push(rows[j].UserID)
                }
                var shuffled = user_ids.sort(function(){return .5 - Math.random()});
                var selected=shuffled.slice(0,3);
-               console.log("Winners :" + selected);
+
+               // updating the results if not announced
                var is_announced = "SELECT * FROM luckydraw_winners WHERE ID = '"+eventId+"'";
                con.query(is_announced, (err, rowPresent) => {
                   if(rowPresent.length == 0){
@@ -57,7 +58,7 @@ cron.schedule('0 * * * * *', function() {
                      con.query(winner_update_query, (err, rowAdded) => {
                         if(err) throw err;
                      
-                        console.log('Last insert ID:', rowAdded);
+                        console.log('Winners declared');
                      });
                   }
                   else 
@@ -76,7 +77,6 @@ app.get('/present-events', function (req, res) {
    con.query(get_event_query, (err, data) => {
       if(err) throw err;
    
-      console.log('Last insert ID:', data);
       res.send(data);
    });
 })
@@ -87,30 +87,28 @@ app.get('/past-events', function (req, res) {
    con.query(get_event_query, (err, data) => {
       if(err) throw err;
    
-      console.log('Last insert ID:', data);
       res.send(data);
    });
 })
 
 // Raffle ticket providing API
 app.post('/purchase', function (req, res) {
-   // console.log(Object.keys(req.body)[0]);
    var timestamp = Date.now()
    var user_id;
    let user_query = "SELECT * FROM users WHERE Name = '" +  Object.keys(req.body)[0] + "';";
 
+   // query for selecting user
    con.query(user_query, (err, data) => {
       if(err) throw err;
       user_id = data[0].ID;
-      // console.log(timestamp)
-      // console.log( data[0].ID);
+
+      // query for generating a ticket and inserting it in database
       let ticket_query = "INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('"+timestamp+"', '"+user_id+"', '0', '0');";
-      console.log(ticket_query);
       con.query(ticket_query, (err, data) => {
-         if(err) throw err;
-      
-         // console.log('Last insert ID:', data);
-         res.send("sent");
+         if(err){ 
+            res.send("Failed to generate a ticket");
+         };
+         res.send("Generated a raffle ticket for you.");
       });
    });
 })
@@ -119,14 +117,14 @@ app.post('/purchase', function (req, res) {
 app.post('/participate', function (req, res) {
    var x = Object.keys(req.body)[0];
    var y = JSON.parse(x);
-   console.log(y);
 
    let user_query = "SELECT * FROM users WHERE Name = '" +  y.Name + "';";
    con.query(user_query, (err, data) => {
       if(err) throw err;
 
       user_id = data[0].ID;
-      console.log(user_id)
+
+      // selecting tickets applicable and checking for user applied or not
       let ticket_query = "SELECT * FROM tickets WHERE UserID = '"+user_id+"' and IsUsed = 0";
       let already_participated_query = "SELECT * FROM tickets WHERE EventId = '"+y.eventID+"' and IsUsed = 1 and userID = '"+user_id+"'";
       
@@ -134,7 +132,7 @@ app.post('/participate', function (req, res) {
          if(err) throw err;
          
          if(isPresent.length > 0)
-            res.send("participated");
+            res.send("Already Participated");
          else{
             con.query(ticket_query, (err, rows) => {
                if(err) throw err;
@@ -146,9 +144,8 @@ app.post('/participate', function (req, res) {
                   var update_query = "UPDATE tickets SET IsUsed = 1, EventId = '"+y.eventID+"' WHERE TicketID = '"+ticket_id+"'";
                   con.query(update_query, (err, data) => {
                      if(err) throw err;
-                  
-                     console.log('Last insert ID:', data);
-                     res.send("sent");
+            
+                     res.send("Participated Successfully");
                   });
                }
             });
@@ -164,6 +161,8 @@ app.get('/eventWinners', function (req, res) {
    con.query(get_event_query,  (err, data) => {
       let response = [];
       if(err) throw err;
+
+      // querying over all the winners of all the completed events
       for(let i=0; i<data.length; i++){
          var eventID = data[i].ID
          var event_query = "SELECT * FROM luckydraw_event WHERE ID = '"+eventID+"'";
@@ -171,8 +170,9 @@ app.get('/eventWinners', function (req, res) {
             if(err) throw err;
             
             var users_query1 = "SELECT * FROM users WHERE ID = '"+data[i].Winner+"' OR ID = '"+data[i].SecondPlace+"' OR ID = '"+data[i].ThirdPlace+"'";
-             con.query(users_query1, (err, userRow) => {
+            con.query(users_query1, (err, userRow) => {
                if(err) throw err;
+   
                var winner, SecondPlace, ThirdPlace;
                if(userRow[0].ID == data[i].Winner)
                   winner = userRow[0].Name
@@ -203,7 +203,6 @@ app.get('/eventWinners', function (req, res) {
                }
                response[i] = sending_data;
                if(i == data.length - 1){
-                  console.log(response);
                   res.send(response);
                }
             });

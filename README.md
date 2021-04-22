@@ -36,7 +36,8 @@ This is a Gaming service to provide API's for lucky-draw gaming service. Helps t
 	npm start
 	```
 
-## Screen-shots
+## Screenshots
+![screenshot](./event-page.png)
 
 
 

@@ -30,6 +30,8 @@ function PresentEcentCard(eventData) {
             alert("Participated in the LuckyDraw ID : " + e);
           } else if (response.data === "noTicket") {
             alert("Failed to participate");
+          } else if(response.data === "participated"){
+            alert("already participated");
           }
       });
   }

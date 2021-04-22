@@ -35,20 +35,23 @@ function PresentEcentCard(eventData) {
   }
 
   return (
-    <div className="">
-      <div>
+    <div className="card-inner-container">
+      <div className="card-event-heading">
         {eventData.data.Name}
       </div>
-      <div>
-        <span>{eventData.data.StartTime}</span>
-        <span>{eventData.data.EndTime}</span>
+      <hr />
+      <div className="card-event-time">
+        <div className="card-event-starttime">Start: {eventData.data.StartTime.substring(0, 10)}</div>
+        <div className="card-event-endtime">End: {eventData.data.EndTime.substring(0, 10)}</div>
       </div>
-      <div>
-        <span>{eventData.data.FirstPrize}</span>
-        <span>{eventData.data.SecondPrize}</span>
-        <span>{eventData.data.ThirdPrize}</span>
+      <hr />
+      <div className="card-event-prize">
+        <div>First Prize: {eventData.data.FirstPrize}</div>
+        <div>Second Prize: {eventData.data.SecondPrize}</div>
+        <div>Third Prize: {eventData.data.ThirdPrize}</div>
       </div>
-      <div>
+      <hr />
+      <div className="card-event-participate">
         <input
           className=""
           type="text"
@@ -56,7 +59,7 @@ function PresentEcentCard(eventData) {
           placeholder="Username..."
           onChange={onChangeUsername}
         />
-        <button onClick={() => onClickParticipate(eventData.data.ID)}>Participate</button>
+        <button className="card-event-button" onClick={() => onClickParticipate(eventData.data.ID)}>Participate</button>
       </div>
     </div>
   );

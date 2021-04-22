@@ -7,15 +7,15 @@ import WinnerSection from '../components/EventWinners'
 function EventList() {
   const [presentEvents, setPresentEvents] = React.useState([]);
   const [pastEvents, setPastEvents] = React.useState([]);
-  const [slicePresentEvents, setSlicePresentEvents] = React.useState(10);
-  const [slicePastEvents, setSlicePastEvents] = React.useState(10);
+  const [slicePresentEvents, setSlicePresentEvents] = React.useState(12);
+  const [slicePastEvents, setSlicePastEvents] = React.useState(12);
 
   const onClickShowMorePresent = () => {
-    setSlicePresentEvents(slicePresentEvents + 10);
+    setSlicePresentEvents(slicePresentEvents + 12);
   }
 
   const onClickShowMorePast = () => {
-    setSlicePastEvents(slicePastEvents + 10);
+    setSlicePastEvents(slicePastEvents + 12);
   }
 
   React.useEffect(() => {
@@ -61,32 +61,44 @@ function EventList() {
   }, []);
 
   return (
-    <div className="event-block">
-      <div>  
-        <div>
-          Present Lucky-Draw Events
+    <div className="main-container flex-box">
+      <div className="event-block">  
+        
+        <div className="present-event">  
+          <div className="event-heading">
+            Present Lucky-Draw Events
+          </div>
+          <div className="present-event-container event-container">
+            {presentEvents.slice(0, slicePresentEvents).map((e) => (
+                <span className="present-event-card card-container">
+                  <PresentEventCard data={e} />
+                </span>
+            ))}
+          </div>
+          <div className="show-more-event">
+            <button onClick={() => onClickShowMorePresent()}>show more</button>
+          </div>
         </div>
-        {presentEvents.slice(0, slicePresentEvents).map((e) => (
-            <div className="present-event-container">
-              <PresentEventCard data={e} />
-            </div>
-        ))}
-        <div>
-          <button onClick={() => onClickShowMorePresent()}>show more</button>
+        
+        <div classNames="past-event">
+          <div className="event-heading past-event-heading">
+            Past Lucky-Draw Events
+          </div>
+          <div className="past-event-container event-container">
+            {pastEvents.slice(0, slicePastEvents).map((e) => (
+                <div className="past-event-card card-container">
+                  <PastEventCard data={e} />
+                </div>
+            ))}
+          </div>
+          <div className="show-more-event">
+            <button onClick={() => onClickShowMorePast()}>show more</button>
+          </div>
         </div>
-        <div>
-          Past Lucky-Draw Events
-        </div>
-        {pastEvents.slice(0, 10).map((e) => (
-            <div className="present-event-container">
-              <PastEventCard data={e} />
-            </div>
-        ))}
-        <div>
-          <button onClick={() => onClickShowMorePast()}>show more</button>
-        </div>
+
       </div>
-      <div>
+
+      <div className="winner-block">
         <WinnerSection />
       </div>
     </div>

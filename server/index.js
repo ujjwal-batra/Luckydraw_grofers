@@ -143,20 +143,21 @@ app.post('/participate', function (req, res) {
    });
 })
 
-
+// Winner declaring API
 app.get('/eventWinners', function (req, res) {
-   var response = [];
+   
    let get_event_query = "SELECT * FROM luckydraw_winners";
-   con.query(get_event_query, (err, data) => {
+   con.query(get_event_query, async (err, data) => {
+      let response = [];
       if(err) throw err;
       for(let i=0; i<data.length; i++){
          var eventID = data[i].ID
          var event_query = "SELECT * FROM luckydraw_event WHERE ID = '"+eventID+"'";
-         con.query(event_query, (err, row) => {
+         await con.query(event_query, async (err, row) => {
             if(err) throw err;
             
             var users_query1 = "SELECT * FROM users WHERE ID = '"+data[i].Winner+"' OR ID = '"+data[i].SecondPlace+"' OR ID = '"+data[i].ThirdPlace+"'";
-            con.query(users_query1, (err, userRow) => {
+            await con.query(users_query1, (err, userRow) => {
                if(err) throw err;
                var winner, SecondPlace, ThirdPlace;
                if(userRow[0].ID == data[i].Winner)
@@ -186,11 +187,14 @@ app.get('/eventWinners', function (req, res) {
                   "SecondPlace": SecondPlace,
                   "ThirdPlace": ThirdPlace
                }
-               console.log('Last insert ID:', data);
-               res.send(sending_data);
+               response[i] = sending_data;
+               if(i == data.length - 1){
+                  console.log(response);
+                  res.send(response);
+               }
             });
+            
          });
-         console.log('Last insert ID:', data);
       }
    });
 })

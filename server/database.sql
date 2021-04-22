@@ -1,6 +1,3 @@
--- Creating Database
-CREATE DATABASE luckydrawgame;
-
 -- Creat User table
 CREATE TABLE users (
     ID int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -124,46 +121,47 @@ CREATE TABLE luckydraw_event (
 );
 
 --  Adding dummy data in luckydraw_event database
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw0', NOW() + INTERVAL 1 DAY, NOW() + INTERVAL 2 DAY, 'emtncexxyq','ovezswvd','qmsfiy');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw1', NOW() + INTERVAL 3 DAY, NOW() + INTERVAL 4 DAY, 'ujbhpixgnx','naepsjne','zdupez');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw2', NOW() + INTERVAL 5 DAY, NOW() + INTERVAL 6 DAY, 'tmffbqadda','pvtdzoqy','nmxnzp');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw3', NOW() + INTERVAL 7 DAY, NOW() + INTERVAL 8 DAY, 'yxjxlcsrfo','osjzmnqa','zacexn');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw4', NOW() + INTERVAL 9 DAY, NOW() + INTERVAL 10 DAY, 'hphinejjyg','hfvpwrkr','moaxci');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw5', NOW() + INTERVAL 11 DAY, NOW() + INTERVAL 12 DAY, 'dqfizcajid','jnuifqwg','zmsflv');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw6', NOW() + INTERVAL 13 DAY, NOW() + INTERVAL 14 DAY, 'krqwsydyce','hlplmqpu','pibbfi');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw7', NOW() + INTERVAL 15 DAY, NOW() + INTERVAL 16 DAY, 'xjmfgqjihg','czhpiqym','yzcsmi');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw8', NOW() + INTERVAL 17 DAY, NOW() + INTERVAL 18 DAY, 'abwrmtzemw','wnxlxilc','josbqo');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw9', NOW() + INTERVAL 19 DAY, NOW() + INTERVAL 20 DAY, 'jmiwqyxkej','cdqserbr','ljixfc');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw10', NOW() + INTERVAL 21 DAY, NOW() + INTERVAL 22 DAY, 'bebfbwbtug','suyzuxxb','iewcsg');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw11', NOW() + INTERVAL 23 DAY, NOW() + INTERVAL 24 DAY, 'akqdgmkmgj','wterqpgb','obtqwh');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw12', NOW() + INTERVAL 25 DAY, NOW() + INTERVAL 26 DAY, 'vxrnxdataf','zumeslyq','qgefpy');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw13', NOW() + INTERVAL 27 DAY, NOW() + INTERVAL 28 DAY, 'kabilpwlxp','wympwvee','lbqbef');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw14', NOW() + INTERVAL 29 DAY, NOW() + INTERVAL 30 DAY, 'bjdzdciqzj','qiuxpnvr','odlcme');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw15', NOW() + INTERVAL 31 DAY, NOW() + INTERVAL 32 DAY, 'hmaogymivd','alimjeup','vyqncf');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw16', NOW() + INTERVAL 33 DAY, NOW() + INTERVAL 34 DAY, 'fdlafzeeoc','axkglkcx','xypgfj');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw17', NOW() + INTERVAL 35 DAY, NOW() + INTERVAL 36 DAY, 'snmzsgrpvh','mtagjwfa','qhvsit');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw18', NOW() + INTERVAL 37 DAY, NOW() + INTERVAL 38 DAY, 'soxgquutue','slnfhlxl','qkpbiq');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw19', NOW() + INTERVAL 39 DAY, NOW() + INTERVAL 40 DAY, 'biveyasrpx','sbpuaisd','zuprtx');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw20', NOW() + INTERVAL 41 DAY, NOW() + INTERVAL 42 DAY, 'fobugbjrfc','xihjseut','oobrll');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw21', NOW() + INTERVAL 43 DAY, NOW() + INTERVAL 44 DAY, 'cneiltokmh','bccnurtm','yckrtk');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw22', NOW() + INTERVAL 45 DAY, NOW() + INTERVAL 46 DAY, 'vrfgszvmgl','dndqjxmv','erurdw');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw23', NOW() + INTERVAL 47 DAY, NOW() + INTERVAL 48 DAY, 'bptkkabcdn','tmsbyaqq','bxnxra');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw24', NOW() + INTERVAL 49 DAY, NOW() + INTERVAL 50 DAY, 'zqjfucsqpt','vtkvppzt','agdavo');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw25', NOW() + INTERVAL 51 DAY, NOW() + INTERVAL 52 DAY, 'lcjhutoxbj','bsypezaj','epiluu');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw26', NOW() + INTERVAL 53 DAY, NOW() + INTERVAL 54 DAY, 'qecabwhrqa','hudaqofn','trlbpl');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw27', NOW() + INTERVAL 55 DAY, NOW() + INTERVAL 56 DAY, 'sehroueqbv','nrriqnnn','laaxgn');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw28', NOW() + INTERVAL 57 DAY, NOW() + INTERVAL 58 DAY, 'ujbipeyfyt','zxzoexqv','yqutvu');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw29', NOW() + INTERVAL 59 DAY, NOW() + INTERVAL 60 DAY, 'kyiprmknqg','vzytupdh','nqycdd');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw30', NOW() + INTERVAL 61 DAY, NOW() + INTERVAL 62 DAY, 'lleoubgiwg','knxhijas','dprwvp');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw31', NOW() + INTERVAL 63 DAY, NOW() + INTERVAL 64 DAY, 'izhrpoynaf','tnmkohnu','grwnvn');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw32', NOW() + INTERVAL 65 DAY, NOW() + INTERVAL 66 DAY, 'xpwoqplypn','jyfdiuvf','ncrbau');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw33', NOW() + INTERVAL 67 DAY, NOW() + INTERVAL 68 DAY, 'sbuykhruzz','fkgtpuna','szxdxn');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw34', NOW() + INTERVAL 69 DAY, NOW() + INTERVAL 70 DAY, 'nglxmhcpnj','hhuwhviq','awwtun');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw35', NOW() + INTERVAL 71 DAY, NOW() + INTERVAL 72 DAY, 'hwulprpmuc','lvhoolgc','vbzats');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw36', NOW() + INTERVAL 73 DAY, NOW() + INTERVAL 74 DAY, 'ykbftqaksk','mtsnpxid','yaaeio');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw37', NOW() + INTERVAL 75 DAY, NOW() + INTERVAL 76 DAY, 'fatqocvxhl','ahtryvpm','ynatph');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw38', NOW() + INTERVAL 77 DAY, NOW() + INTERVAL 78 DAY, 'lnadbxwvef','ggaatcls','uuponn');
-INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw39', NOW() + INTERVAL 79 DAY, NOW() + INTERVAL 80 DAY, 'fmxtxhiedw','acfaigls','zgbnjz');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw0', NOW() + INTERVAL -2 HOUR, NOW() + INTERVAL -1 HOUR, 'Washing Machine','Fridge','Realme XT');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw0', NOW() + INTERVAL 1 HOUR, NOW() + INTERVAL 2 HOUR, 'emtncexxyq','ovezswvd','qmsfiy');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw1', NOW() + INTERVAL 3 HOUR, NOW() + INTERVAL 4 HOUR, 'ujbhpixgnx','naepsjne','zdupez');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw2', NOW() + INTERVAL 5 HOUR, NOW() + INTERVAL 6 HOUR, 'tmffbqadda','pvtdzoqy','nmxnzp');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw3', NOW() + INTERVAL 7 HOUR, NOW() + INTERVAL 8 HOUR, 'yxjxlcsrfo','osjzmnqa','zacexn');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw4', NOW() + INTERVAL 9 HOUR, NOW() + INTERVAL 10 HOUR, 'hphinejjyg','hfvpwrkr','moaxci');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw5', NOW() + INTERVAL 11 HOUR, NOW() + INTERVAL 12 HOUR, 'dqfizcajid','jnuifqwg','zmsflv');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw6', NOW() + INTERVAL 13 HOUR, NOW() + INTERVAL 14 HOUR, 'krqwsydyce','hlplmqpu','pibbfi');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw7', NOW() + INTERVAL 15 HOUR, NOW() + INTERVAL 16 HOUR, 'xjmfgqjihg','czhpiqym','yzcsmi');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw8', NOW() + INTERVAL 17 HOUR, NOW() + INTERVAL 18 HOUR, 'abwrmtzemw','wnxlxilc','josbqo');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw9', NOW() + INTERVAL 19 HOUR, NOW() + INTERVAL 20 HOUR, 'jmiwqyxkej','cdqserbr','ljixfc');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw10', NOW() + INTERVAL 21 HOUR, NOW() + INTERVAL 22 HOUR, 'bebfbwbtug','suyzuxxb','iewcsg');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw11', NOW() + INTERVAL 23 HOUR, NOW() + INTERVAL 24 HOUR, 'akqdgmkmgj','wterqpgb','obtqwh');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw12', NOW() + INTERVAL 25 HOUR, NOW() + INTERVAL 26 HOUR, 'vxrnxdataf','zumeslyq','qgefpy');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw13', NOW() + INTERVAL 27 HOUR, NOW() + INTERVAL 28 HOUR, 'kabilpwlxp','wympwvee','lbqbef');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw14', NOW() + INTERVAL 29 HOUR, NOW() + INTERVAL 30 HOUR, 'bjdzdciqzj','qiuxpnvr','odlcme');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw15', NOW() + INTERVAL 31 HOUR, NOW() + INTERVAL 32 HOUR, 'hmaogymivd','alimjeup','vyqncf');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw16', NOW() + INTERVAL 33 HOUR, NOW() + INTERVAL 34 HOUR, 'fdlafzeeoc','axkglkcx','xypgfj');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw17', NOW() + INTERVAL 35 HOUR, NOW() + INTERVAL 36 HOUR, 'snmzsgrpvh','mtagjwfa','qhvsit');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw18', NOW() + INTERVAL 37 HOUR, NOW() + INTERVAL 38 HOUR, 'soxgquutue','slnfhlxl','qkpbiq');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw19', NOW() + INTERVAL 39 HOUR, NOW() + INTERVAL 40 HOUR, 'biveyasrpx','sbpuaisd','zuprtx');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw20', NOW() + INTERVAL 41 HOUR, NOW() + INTERVAL 42 HOUR, 'fobugbjrfc','xihjseut','oobrll');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw21', NOW() + INTERVAL 43 HOUR, NOW() + INTERVAL 44 HOUR, 'cneiltokmh','bccnurtm','yckrtk');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw22', NOW() + INTERVAL 45 HOUR, NOW() + INTERVAL 46 HOUR, 'vrfgszvmgl','dndqjxmv','erurdw');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw23', NOW() + INTERVAL 47 HOUR, NOW() + INTERVAL 48 HOUR, 'bptkkabcdn','tmsbyaqq','bxnxra');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw24', NOW() + INTERVAL 49 HOUR, NOW() + INTERVAL 50 HOUR, 'zqjfucsqpt','vtkvppzt','agdavo');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw25', NOW() + INTERVAL 51 HOUR, NOW() + INTERVAL 52 HOUR, 'lcjhutoxbj','bsypezaj','epiluu');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw26', NOW() + INTERVAL 53 HOUR, NOW() + INTERVAL 54 HOUR, 'qecabwhrqa','hudaqofn','trlbpl');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw27', NOW() + INTERVAL 55 HOUR, NOW() + INTERVAL 56 HOUR, 'sehroueqbv','nrriqnnn','laaxgn');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw28', NOW() + INTERVAL 57 HOUR, NOW() + INTERVAL 58 HOUR, 'ujbipeyfyt','zxzoexqv','yqutvu');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw29', NOW() + INTERVAL 59 HOUR, NOW() + INTERVAL 60 HOUR, 'kyiprmknqg','vzytupdh','nqycdd');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw30', NOW() + INTERVAL 61 HOUR, NOW() + INTERVAL 62 HOUR, 'lleoubgiwg','knxhijas','dprwvp');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw31', NOW() + INTERVAL 63 HOUR, NOW() + INTERVAL 64 HOUR, 'izhrpoynaf','tnmkohnu','grwnvn');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw32', NOW() + INTERVAL 65 HOUR, NOW() + INTERVAL 66 HOUR, 'xpwoqplypn','jyfdiuvf','ncrbau');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw33', NOW() + INTERVAL 67 HOUR, NOW() + INTERVAL 68 HOUR, 'sbuykhruzz','fkgtpuna','szxdxn');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw34', NOW() + INTERVAL 69 HOUR, NOW() + INTERVAL 70 HOUR, 'nglxmhcpnj','hhuwhviq','awwtun');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw35', NOW() + INTERVAL 71 HOUR, NOW() + INTERVAL 72 HOUR, 'hwulprpmuc','lvhoolgc','vbzats');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw36', NOW() + INTERVAL 73 HOUR, NOW() + INTERVAL 74 HOUR, 'ykbftqaksk','mtsnpxid','yaaeio');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw37', NOW() + INTERVAL 75 HOUR, NOW() + INTERVAL 76 HOUR, 'fatqocvxhl','ahtryvpm','ynatph');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw38', NOW() + INTERVAL 77 HOUR, NOW() + INTERVAL 78 HOUR, 'lnadbxwvef','ggaatcls','uuponn');
+INSERT INTO luckydraw_event (Name, StartTime, EndTime, FirstPrize, SecondPrize, ThirdPrize) VALUES ('luckyDraw39', NOW() + INTERVAL 79 HOUR, NOW() + INTERVAL 80 HOUR, 'fmxtxhiedw','acfaigls','zgbnjz');
 
 -- LuckyDraw winner database
 CREATE TABLE luckydraw_winners (
@@ -175,6 +173,40 @@ CREATE TABLE luckydraw_winners (
 
 -- LuckyDraw ticket database
 CREATE TABLE tickets (
-    TicketID int(10) NOT NULL,
-    UserID int(10)
+    TicketID bigint NOT NULL,
+    UserID bigint,
+    IsUsed int,
+    EventId int  
 );
+
+-- creating dummy tickets
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098362942', '1', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098365050', '1', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098366827', '1', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098378629', '2', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098380874', '2', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098382758', '2', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098390164', '3', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098392561', '3', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098394236', '3', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098402213', '4', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098404114', '4', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098405899', '4', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098412850', '5', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098415187', '5', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098417403', '5', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098424593', '6', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098427040', '6', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098429040', '6', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098436306', '7', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098438032', '7', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098439602', '7', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098446617', '8', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098448962', '8', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098451179', '8', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098459236', '9', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098461584', '9', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098463435', '9', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098470466', '10', '1', '1');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098472651', '10', '0', '0');
+INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('1619098474403', '10', '0', '0');

@@ -3,6 +3,7 @@ var express = require('express');
 var fs = require("fs");
 var mysql = require('mysql2');
 const cron = require('node-cron');
+var async = require('async');
 
 // app inialization
 var app = express();
@@ -15,7 +16,7 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "admin",
-  database: "luckydrawgame"
+  database: "checkdatabase3"
 });
 // checking connection to the database
 con.connect(function(err) {
@@ -26,11 +27,13 @@ con.connect(function(err) {
 });
 
 cron.schedule('0 * * * * *', function() {
-   var winner_query = "SELECT * FROM luckydraw_event WHERE DATEDIFF(EndTime, NOW()) <= 0"
+   var winner_query = "SELECT * FROM luckydraw_event WHERE TIMEDIFF( EndTime, NOW()) <= 0"
    con.query(winner_query, (err, data) => {
       if(err) throw err;
-      for(let i=0; i<data.length; i++){
-         var eventId = data[i].ID
+
+      console.log(data[0])
+      async.each(data, function (row, callback) {
+         var eventId = row.ID
          console.log(eventId);
          var find_tickets_query = "SELECT * FROM tickets WHERE EventId = '"+eventId+"' and IsUsed = 1"
          con.query(find_tickets_query, (err, rows) => {
@@ -63,13 +66,13 @@ cron.schedule('0 * * * * *', function() {
             }
             
          });
-      }
+      })
    });
 });
 
 // present event or upcoming event API
 app.get('/present-events', function (req, res) {
-   let get_event_query = "SELECT * FROM luckydraw_event WHERE DATEDIFF(EndTime, NOW()) > 0";
+   let get_event_query = "SELECT * FROM luckydraw_event WHERE TIMEDIFF( EndTime, NOW()) > 0";
    con.query(get_event_query, (err, data) => {
       if(err) throw err;
    
@@ -80,7 +83,7 @@ app.get('/present-events', function (req, res) {
 
 // past event API
 app.get('/past-events', function (req, res) {
-   let get_event_query = "SELECT * FROM luckydraw_event WHERE DATEDIFF(EndTime, NOW()) <= 0";
+   let get_event_query = "SELECT * FROM luckydraw_event WHERE TIMEDIFF( EndTime, NOW()) <= 0";
    con.query(get_event_query, (err, data) => {
       if(err) throw err;
    
@@ -91,7 +94,7 @@ app.get('/past-events', function (req, res) {
 
 // Raffle ticket providing API
 app.post('/purchase', function (req, res) {
-   console.log(Object.keys(req.body)[0]);
+   // console.log(Object.keys(req.body)[0]);
    var timestamp = Date.now()
    var user_id;
    let user_query = "SELECT * FROM users WHERE Name = '" +  Object.keys(req.body)[0] + "';";
@@ -99,13 +102,14 @@ app.post('/purchase', function (req, res) {
    con.query(user_query, (err, data) => {
       if(err) throw err;
       user_id = data[0].ID;
-      console.log(timestamp)
-      console.log( data[0].ID);
+      // console.log(timestamp)
+      // console.log( data[0].ID);
       let ticket_query = "INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('"+timestamp+"', '"+user_id+"', '0', '0');";
+      console.log(ticket_query);
       con.query(ticket_query, (err, data) => {
          if(err) throw err;
       
-         console.log('Last insert ID:', data);
+         // console.log('Last insert ID:', data);
          res.send("sent");
       });
    });
@@ -147,17 +151,17 @@ app.post('/participate', function (req, res) {
 app.get('/eventWinners', function (req, res) {
    
    let get_event_query = "SELECT * FROM luckydraw_winners";
-   con.query(get_event_query, async (err, data) => {
+   con.query(get_event_query,  (err, data) => {
       let response = [];
       if(err) throw err;
       for(let i=0; i<data.length; i++){
          var eventID = data[i].ID
          var event_query = "SELECT * FROM luckydraw_event WHERE ID = '"+eventID+"'";
-         await con.query(event_query, async (err, row) => {
+          con.query(event_query,  (err, row) => {
             if(err) throw err;
             
             var users_query1 = "SELECT * FROM users WHERE ID = '"+data[i].Winner+"' OR ID = '"+data[i].SecondPlace+"' OR ID = '"+data[i].ThirdPlace+"'";
-            await con.query(users_query1, (err, userRow) => {
+             con.query(users_query1, (err, userRow) => {
                if(err) throw err;
                var winner, SecondPlace, ThirdPlace;
                if(userRow[0].ID == data[i].Winner)

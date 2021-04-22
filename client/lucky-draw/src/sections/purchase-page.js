@@ -32,7 +32,7 @@ function PurchasePage() {
 
     return (
         <div className="input">
-            <form onSubmit={onSubmitPurchase} method="POST">
+            <div>
                 <input
                     className=""
                     type="text"
@@ -44,8 +44,9 @@ function PurchasePage() {
                     className="submitSignupInput"
                     type="submit"
                     placeholder="Buy this product"
+                    onClick={onSubmitPurchase}
                 />
-            </form>
+            </div>
         </div>
     );
 }

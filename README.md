@@ -52,24 +52,24 @@ This is a Gaming service to provide API's for lucky-draw gaming service. Helps t
 	    "SecondPrize": "Realme XT",
 	    "ThirdPrize": "Smart Watch"
 	}
-  2. ``` /past-events ``` : provides the list of past events.
-  3. ``` /purchase ``` :  A post request allows user to purchase an Item and get a Raffle ticket (lucky draw ticket). Body for post request :
+2. ``` /past-events ``` : provides the list of past events.
+3. ``` /purchase ``` :  A post request allows user to purchase an Item and get a Raffle ticket (lucky draw ticket). Body for post request :
 	  ```
 	  {
 		  userName: 'Your username'
 	  }
 		```
-	4. ``` /eventWinners ``` : It provides winner of all completed lucky draw.
+4. ``` /eventWinners ``` : It provides winner of all completed lucky draw.
 	ex:
-		```
-		{
-			 "luckydraw": "luckyDraw0",
-			 "FirstPlace": "Ellia Barnes",
-			 "SecondPlace": "Olivia Morrison",
-			 "ThirdPlace": "Alissa Wells"
-		}
-		```
-2. ``` /participate ``` : A post request allowing you to participate in a lucky draw event. body for post request :
+	```
+	{
+		"luckydraw": "luckyDraw0",
+		"FirstPlace": "Ellia Barnes",
+		"SecondPlace": "Olivia Morrison",
+		"ThirdPlace": "Alissa Wells"
+	}
+	```
+5. ``` /participate ``` : A post request allowing you to participate in a lucky draw event. body for post request :
 	```
 	{
 		Name :  'Your username',

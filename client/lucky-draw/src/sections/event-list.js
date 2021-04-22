@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 import PresentEventCard from '../components/PresentEventCard'
 import PastEventCard from '../components/PastEventCard'
-
+import WinnerSection from '../components/EventWinners'
 function EventList() {
   const [presentEvents, setPresentEvents] = React.useState([]);
   const [pastEvents, setPastEvents] = React.useState([]);
@@ -62,27 +62,32 @@ function EventList() {
 
   return (
     <div className="event-block">
-      <div>
-        Present Lucky-Draw Events
+      <div>  
+        <div>
+          Present Lucky-Draw Events
+        </div>
+        {presentEvents.slice(0, slicePresentEvents).map((e) => (
+            <div className="present-event-container">
+              <PresentEventCard data={e} />
+            </div>
+        ))}
+        <div>
+          <button onClick={() => onClickShowMorePresent()}>show more</button>
+        </div>
+        <div>
+          Past Lucky-Draw Events
+        </div>
+        {pastEvents.slice(0, 10).map((e) => (
+            <div className="present-event-container">
+              <PastEventCard data={e} />
+            </div>
+        ))}
+        <div>
+          <button onClick={() => onClickShowMorePast()}>show more</button>
+        </div>
       </div>
-      {presentEvents.slice(0, slicePresentEvents).map((e) => (
-          <div className="present-event-container">
-            <PresentEventCard data={e} />
-          </div>
-      ))}
       <div>
-        <button onClick={() => onClickShowMorePresent()}>show more</button>
-      </div>
-      <div>
-        Past Lucky-Draw Events
-      </div>
-      {pastEvents.slice(0, 10).map((e) => (
-          <div className="present-event-container">
-            <PastEventCard data={e} />
-          </div>
-      ))}
-      <div>
-        <button onClick={() => onClickShowMorePast()}>show more</button>
+        <WinnerSection />
       </div>
     </div>
   );

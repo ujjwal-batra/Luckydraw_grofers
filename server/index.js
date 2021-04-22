@@ -2,6 +2,7 @@ const { time } = require('console');
 var express = require('express');
 var fs = require("fs");
 var mysql = require('mysql2');
+const cron = require('node-cron');
 
 // app inialization
 var app = express();
@@ -22,6 +23,48 @@ con.connect(function(err) {
       console.log(err);
    else
       console.log("Connected To database!");
+});
+
+cron.schedule('0 * * * * *', function() {
+   var winner_query = "SELECT * FROM luckydraw_event WHERE DATEDIFF(EndTime, NOW()) <= 0"
+   con.query(winner_query, (err, data) => {
+      if(err) throw err;
+      for(let i=0; i<data.length; i++){
+         var eventId = data[i].ID
+         console.log(eventId);
+         var find_tickets_query = "SELECT * FROM tickets WHERE EventId = '"+eventId+"' and IsUsed = 1"
+         con.query(find_tickets_query, (err, rows) => {
+            if(err) throw err;
+         
+            if(rows.length <= 3){
+               console.log("Lack of participation No winner");
+            }
+            else{
+               var user_ids = [];
+               for(let j=0; j<rows.length; j++){
+                  user_ids.push(rows[j].UserID)
+               }
+               var shuffled = user_ids.sort(function(){return .5 - Math.random()});
+               var selected=shuffled.slice(0,3);
+               console.log("Winners :" + selected);
+               var is_announced = "SELECT * FROM luckydraw_winners WHERE ID = '"+eventId+"'";
+               con.query(is_announced, (err, rowPresent) => {
+                  if(rowPresent.length == 0){
+                     var winner_update_query = "INSERT INTO luckydraw_winners (ID, Winner, SecondPlace, ThirdPlace) VALUES ('"+eventId+"', '"+selected[0]+"', '"+selected[1]+"', '"+selected[2]+"');";
+                     con.query(winner_update_query, (err, rowAdded) => {
+                        if(err) throw err;
+                     
+                        console.log('Last insert ID:', rowAdded);
+                     });
+                  }
+                  else 
+                     console.log("Already Announced")
+               });
+            }
+            
+         });
+      }
+   });
 });
 
 // present event or upcoming event API
@@ -100,6 +143,57 @@ app.post('/participate', function (req, res) {
    });
 })
 
+
+app.get('/eventWinners', function (req, res) {
+   var response = [];
+   let get_event_query = "SELECT * FROM luckydraw_winners";
+   con.query(get_event_query, (err, data) => {
+      if(err) throw err;
+      for(let i=0; i<data.length; i++){
+         var eventID = data[i].ID
+         var event_query = "SELECT * FROM luckydraw_event WHERE ID = '"+eventID+"'";
+         con.query(event_query, (err, row) => {
+            if(err) throw err;
+            
+            var users_query1 = "SELECT * FROM users WHERE ID = '"+data[i].Winner+"' OR ID = '"+data[i].SecondPlace+"' OR ID = '"+data[i].ThirdPlace+"'";
+            con.query(users_query1, (err, userRow) => {
+               if(err) throw err;
+               var winner, SecondPlace, ThirdPlace;
+               if(userRow[0].ID == data[i].Winner)
+                  winner = userRow[0].Name
+               else if(userRow[1].ID == data[i].Winner)
+                  winner = userRow[1].Name
+               else if(userRow[2].ID == data[i].Winner)
+                  winner = userRow[2].Name
+                  
+               if(userRow[0].ID == data[i].SecondPlace)
+                  SecondPlace = userRow[0].Name
+               else if(userRow[1].ID == data[i].SecondPlace)
+                  SecondPlace = userRow[1].Name
+               else if(userRow[2].ID == data[i].SecondPlace)
+                  SecondPlace = userRow[2].Name
+               
+               if(userRow[0].ID == data[i].ThirdPlace)
+                  ThirdPlace = userRow[0].Name
+               else if(userRow[1].ID == data[i].ThirdPlace)
+                  ThirdPlace = userRow[1].Name
+               else if(userRow[2].ID == data[i].ThirdPlace)
+                  ThirdPlace = userRow[2].Name
+
+               var sending_data = {
+                  "luckydraw": row[0].Name,
+                  "FirstPlace": winner,
+                  "SecondPlace": SecondPlace,
+                  "ThirdPlace": ThirdPlace
+               }
+               console.log('Last insert ID:', data);
+               res.send(sending_data);
+            });
+         });
+         console.log('Last insert ID:', data);
+      }
+   });
+})
 
 // establishing backend server
 var server = app.listen(3000, function () {

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
     return (
       <div>
@@ -12,14 +14,14 @@ const Header = () => {
           <div className="headerLinks">
             <span className="loginButtonHeader">
               <span>
-                <a className="loginButton" href="#">
-                  LogIn
-                </a>
+                <Link className="loginButton" to="/purchase">
+                  Purchase
+                </Link>
               </span>
               <span>
-                <a className="loginButton" href="#">
+                {/* <a className="loginButton" href="#">
                   /Register
-                </a>
+                </a> */}
               </span>
             </span>
           </div>

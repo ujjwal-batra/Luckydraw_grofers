@@ -21,7 +21,7 @@ function EventList() {
 
   // to fetch present, upcoming and past events from the database
   React.useEffect(() => {
-    let link = "http://localhost:3000/present-events"
+    let link = "http://localhost:3001/present-events"
     try {
       fetch(link)
       .then((results) => results.json())
@@ -40,7 +40,7 @@ function EventList() {
         }
       }); // fetching present events
       
-      link = "http://localhost:3000/past-events"
+      link = "http://localhost:3001/past-events"
       fetch(link)
       .then((results) => results.json())
       .then((data) => {

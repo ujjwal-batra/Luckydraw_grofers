@@ -20,7 +20,7 @@ function PurchasePage() {
         console.log(details)
         axios({
             method: "POST",
-            url: "http://localhost:3000/purchase",
+            url: "http://localhost:3001/purchase",
             data: username
           }).then((response) => {
                 alert(response.data);

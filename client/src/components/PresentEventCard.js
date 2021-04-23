@@ -19,7 +19,7 @@ function PresentEcentCard(eventData) {
       console.log(details)
       axios({
           method: "POST",
-          url: "http://localhost:3001/participate",
+          url: "http://localhost:3000/participate",
           headers : {
             'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
           },

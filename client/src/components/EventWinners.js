@@ -4,7 +4,7 @@ function EventWinners() {
     const [eventWinners, setEventWinners] = React.useState([]);
 
     React.useEffect(() => {
-        let link = "http://localhost:3001/eventWinners"
+        let link = "http://localhost:3000/eventWinners"
         try {
           fetch(link)
           .then((results) => results.json())

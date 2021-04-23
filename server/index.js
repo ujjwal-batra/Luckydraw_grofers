@@ -2,19 +2,22 @@ var express = require('express');
 var mysql = require('mysql2');
 var cron = require('node-cron');
 var async = require('async');
+var cors = require('cors');
 
 // app inialization
 var app = express();
 app.use(express.urlencoded());
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
+// allowing CORS
+app.use(cors())
 
 // making connection to the database
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "admin",
-  database: "luckydraw"
+  database: "checkdatabase4"
 });
 // checking connection to the database
 con.connect(function(err) {
@@ -221,7 +224,7 @@ app.get('/eventWinners', function (req, res) {
 })
 
 // establishing backend server
-var server = app.listen(3001, function () {
+var server = app.listen(3000, function () {
    var host = server.address().address
    var port = server.address().port
    console.log("APIs listning at http://localhost:3000/")

@@ -8,7 +8,7 @@ import PurchasePage from './sections/purchase-page.js'
 function App() {
   return (
     <div className="App">
-      <Route path="/events" exact render={(props) => <EventPage />} />
+      <Route path="/" exact render={(props) => <EventPage />} />
       <Route path="/purchase" exact render={(props) => <PurchasePage />} />
     </div>
   );

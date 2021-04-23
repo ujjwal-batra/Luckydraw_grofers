@@ -177,41 +177,84 @@
     display: flex;
     align-items: center;
     background-color: #6C63FF;
-  }
+}
   
-  .headerLinks {
-    margin-left: auto;
-  }
-  
-  .heading {
-    margin-right: auto;
-  }
-  
-  .techvault {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 23px;
-    color: #FFFFFF;
-    text-decoration: none;
-  }
-  
-  .contactButton {
-    padding-right: 0px;
-    text-decoration: none;
+.headerLinks {
+margin-left: auto;
+}
+
+.heading {
+margin-right: auto;
+}
+
+.techvault {
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 23px;
+color: #FFFFFF;
+text-decoration: none;
+}
+
+.contactButton {
+padding-right: 0px;
+text-decoration: none;
+color: white;
+}
+
+.loginButtonHeader {
+padding: 4%;
+background-color: white;
+color: #6C63FF;
+border-radius: 3px;
+}
+
+.loginButtonHeader a {
+text-decoration: none;
+color: #6C63FF;
+font-weight: 600;
+}
+
+/* purchase page */
+.purchase-container{
+    margin-left: 40%;
+    margin-top: 10%;
+    border: 1px black solid;
+    width: 300px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-radius: 10px
+}
+
+.purchase-input{
+    border: none;
+    border: #6C63FF 2px solid;
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.purchase-submit{
+    background: none;
+    border: none;
+    background-color: #6C63FF;
+    padding: 5px;
+    margin: 5px;
     color: white;
-  }
-  
-  .loginButtonHeader {
-    padding: 4%;
-    background-color: white;
-    color: #6C63FF;
-    border-radius: 3px;
-  }
-  
-  .loginButtonHeader a {
+    border-radius: 20px;
+}
+
+.purchase-link {
     text-decoration: none;
-    color: #6C63FF;
-    font-weight: 600;
-  }
+    padding-top: 10px;
+}
+
+.purchase-link a{
+    text-decoration: none;
+}
+
+.purchase-hint{
+    padding-top: 10px;
+    color: #797979;
+}

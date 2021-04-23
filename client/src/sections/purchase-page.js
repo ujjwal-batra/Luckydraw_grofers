@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Header from "../components/Header";
 
 function PurchasePage() {
     const [username, setUsername] = React.useState("");
@@ -28,25 +29,37 @@ function PurchasePage() {
 
     return (
         <div className="input">
-            <div>
-                <input
-                    className=""
-                    type="text"
-                    name="username"
-                    placeholder="Username..."
-                    onChange={onChangeUsername}
-                />
-                <input
-                    className="submitSignupInput"
-                    type="submit"
-                    value="Buy this product"
-                    onClick={onSubmitPurchase}
-                />
-            </div>
-            <div>
-                <Link className="purchase-page-link" to="/events">
-                    Try participating in Lucky-draw
-                </Link>
+            <Header />
+            <div className="purchase-container">
+                <div className="purchase-image">
+                    <img src="https://media.wired.com/photos/5e9f56f143e5800008514457/1:1/w_1277,h_1277,c_limit/Gear-Feature-Apple_new-iphone-se-white_04152020.jpg" width="200px" height="200px"/>
+                </div>
+                <div className="purchase-cost">
+                    $1000
+                </div>
+                <div className="">
+                    <input
+                        className="purchase-input"
+                        type="text"
+                        name="username"
+                        placeholder="Username..."
+                        onChange={onChangeUsername}
+                    />
+                    <input
+                        className="purchase-submit"
+                        type="submit"
+                        value="Buy &rarr;"
+                        onClick={onSubmitPurchase}
+                    />
+                </div>
+                <div className="purchase-link">
+                    <Link className="purchase-page-link" to="/">
+                        Try participating in Lucky-draw
+                    </Link>
+                </div>
+                <div className="purchase-hint">
+                    **To buy the ticket write ur username and proceed
+                </div>
             </div>
         </div>
     );

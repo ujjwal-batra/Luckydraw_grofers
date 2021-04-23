@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import ReactStars from 'react-stars'
 
 function PresentEcentCard(eventData) {
   const [username, setUsername] = React.useState("");
@@ -33,16 +34,15 @@ function PresentEcentCard(eventData) {
       <div className="card-event-heading">
         {eventData.data.Name}
       </div>
-      <hr />
       <div className="card-event-time">
-        <div className="card-event-starttime">Start: {eventData.data.StartTime.substring(0, 10)}</div>
-        <div className="card-event-endtime">End: {eventData.data.EndTime.substring(0, 10)}</div>
+        <span className="card-event-starttime">{eventData.data.StartTime.substring(0, 10)} To </span>
+        <span className="card-event-endtime">{eventData.data.EndTime.substring(0, 10)}</span>
       </div>
       <hr />
       <div className="card-event-prize">
-        <div>First Prize: {eventData.data.FirstPrize}</div>
-        <div>Second Prize: {eventData.data.SecondPrize}</div>
-        <div>Third Prize: {eventData.data.ThirdPrize}</div>
+        <div><span>First Prize: {eventData.data.FirstPrize}</span> <span className="stars"><ReactStars count={1} value={1} size={24} color2={'#ffd700'} color1={'#ffd700'} /></span></div>
+        <div><span>Second Prize: {eventData.data.SecondPrize}</span> <span className="stars"><ReactStars count={1} value={1} size={24} color2={'#C0C0C0'} color1={'#C0C0C0'} /></span></div>
+        <div><span>Third Prize: {eventData.data.ThirdPrize}</span> <span className="stars"><ReactStars count={1} value={1} size={24} color2={'#CD7F32'} color1={'#CD7F32'} /></span></div>
       </div>
       <hr />
       <div className="card-event-participate">
@@ -53,7 +53,7 @@ function PresentEcentCard(eventData) {
           placeholder="Username..."
           onChange={onChangeUsername}
         />
-        <button className="card-event-button" onClick={() => onClickParticipate(eventData.data.ID)}>Participate</button>
+        <button className="card-event-button" onClick={() => onClickParticipate(eventData.data.ID)}>&rarr;</button>
       </div>
     </div>
   );

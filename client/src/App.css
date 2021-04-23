@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Roboto;
 }
 .App{
     margin-bottom: 40px;
@@ -20,11 +21,11 @@
 }
 
 .event-heading{
-    color: white;
-    font-size: large;
+    font-size: 28px;
     font-weight: 400;
     padding: 10px 10px;
-    background-color: #6C63FF;
+    margin-left: 40px;
+    color: #797979;
 }
 
 .past-event-heading{
@@ -57,15 +58,34 @@
 
 .card-inner-container{
     border: 1px black solid;
-    width: 300px
+    width: 300px;
+    border-radius: 5px;
 }
 
 .card-event-heading{
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
     background-color: #6C63FF;
     color: white;
     padding: 8px;
+}
+
+.card-event-time{
+    font-size: 12px;
+    background-color: #6C63FF;
+    color: white;
+    padding-top: 4px;
+    padding-bottom: 8px;
+}
+
+.card-event-prize div{
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+.stars{
+    margin-top: -10px;
 }
 
 .card-event-participate{
@@ -76,35 +96,46 @@
     border-radius: 5px;
     text-decoration: none;
     border: none;
-    border: 1px solid black;
-    padding: 3px 7px;
+    border: 2px solid #6C63FF;
+    /* border: 1px solid black; */
+    padding: 4px 8px;
+    border-radius: 15px;
 }
 
 .card-event-button{
     text-decoration: none;
     border: none;
-    background: none;
+    background: #6C63FF;
+    color: white;
     margin: 4px 4px;
     padding: 2px 4px;
     border: #6C63FF solid 3px;
-    border-radius: 10px;
+    border-radius: 50px;
 }
 
 .winner-Card{
     border: 1px solid black;
     margin: 10px;
     text-align: center;
+    border-radius: 5px;
 }
 
 .winner-card-heading{
     font-size: 18px;
     font-weight: 400;
+    padding: 10px;
+    background-color: #6C63FF;
+    color: white;
+}
+
+.winner-card-list div{
+    padding: 5px;
 }
 
 .winner-heading{
     padding: 10px 10px;
     /* margin-top: 50px; */
-    font-size: 20px;
+    font-size: 28px;
     font-weight: bold;
     color: #6C63FF;
     text-align: center;
@@ -117,6 +148,7 @@
 
 .blink {
     animation: blink 1s steps(1, end) infinite;
+    padding: 5px;
 }
   
 @keyframes blink {
@@ -136,3 +168,50 @@
         flex: 100%;
     }
 }
+
+/* header */
+.headerContainer {
+    /* margin-top: 10px; */
+    padding: 10px 3%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    background-color: #6C63FF;
+  }
+  
+  .headerLinks {
+    margin-left: auto;
+  }
+  
+  .heading {
+    margin-right: auto;
+  }
+  
+  .techvault {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 23px;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  
+  .contactButton {
+    padding-right: 0px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .loginButtonHeader {
+    padding: 4%;
+    background-color: white;
+    color: #6C63FF;
+    border-radius: 3px;
+  }
+  
+  .loginButtonHeader a {
+    text-decoration: none;
+    color: #6C63FF;
+    font-weight: 600;
+  }

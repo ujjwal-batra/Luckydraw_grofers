@@ -6,12 +6,10 @@ function PastEventCard(eventData) {
       <div className="card-event-heading">
         {eventData.data.Name}
       </div>
-      <hr />
       <div className="card-event-time">
-        <div className="card-event-starttime">Start: {eventData.data.StartTime.substring(0, 10)}</div>
-        <div className="card-event-endtime">End:{eventData.data.EndTime.substring(0, 10)}</div>
+      <span className="card-event-starttime">{eventData.data.StartTime.substring(0, 10)} To </span>
+        <span className="card-event-endtime">{eventData.data.EndTime.substring(0, 10)}</span>
       </div>
-      <hr />
       <div className="card-event-prize">
         <div>First Prize: {eventData.data.FirstPrize}</div>
         <div>Second Prize: {eventData.data.SecondPrize}</div>

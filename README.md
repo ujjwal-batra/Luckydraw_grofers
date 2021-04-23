@@ -37,7 +37,7 @@ This is a Gaming service to provide API's for lucky-draw gaming service. Helps t
 	```
 
 ## Screenshots
-![alt text](./event-page.png)
+![alt text](./event-page-ss.png)
 
 ## API endpoints
 1. ``` /present-events ``` : provides the list of present and upcoming events

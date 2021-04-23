@@ -76,7 +76,7 @@ app.get('/present-events', function (req, res) {
    let get_event_query = "SELECT * FROM luckydraw_event WHERE TIMEDIFF( EndTime, NOW()) > 0";
    con.query(get_event_query, (err, data) => {
       if(err) throw err;
-   
+      
       res.send(data);
    });
 })
@@ -100,16 +100,20 @@ app.post('/purchase', function (req, res) {
    // query for selecting user
    con.query(user_query, (err, data) => {
       if(err) throw err;
-      user_id = data[0].ID;
 
-      // query for generating a ticket and inserting it in database
-      let ticket_query = "INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('"+timestamp+"', '"+user_id+"', '0', '0');";
-      con.query(ticket_query, (err, data) => {
-         if(err){ 
-            res.send("Failed to generate a ticket");
-         };
-         res.send("Generated a raffle ticket for you.");
-      });
+      if(data.length == 0 )
+         res.send("no user found")
+      else{
+         user_id = data[0].ID;
+         // query for generating a ticket and inserting it in database
+         let ticket_query = "INSERT INTO tickets (TicketID, UserID, IsUsed, EventId) VALUES ('"+timestamp+"', '"+user_id+"', '0', '0');";
+         con.query(ticket_query, (err, data) => {
+            if(err){ 
+               res.send("Failed to generate a ticket");
+            };
+            res.send("Generated a raffle ticket for you.");
+         });
+      }
    });
 })
 
@@ -122,35 +126,39 @@ app.post('/participate', function (req, res) {
    con.query(user_query, (err, data) => {
       if(err) throw err;
 
-      user_id = data[0].ID;
+      if(data.length == 0)
+         res.send("no user found")
+      else{
+         user_id = data[0].ID;
 
-      // selecting tickets applicable and checking for user applied or not
-      let ticket_query = "SELECT * FROM tickets WHERE UserID = '"+user_id+"' and IsUsed = 0";
-      let already_participated_query = "SELECT * FROM tickets WHERE EventId = '"+y.eventID+"' and IsUsed = 1 and userID = '"+user_id+"'";
-      
-      con.query(already_participated_query, (err, isPresent) => {
-         if(err) throw err;
+         // selecting tickets applicable and checking for user applied or not
+         let ticket_query = "SELECT * FROM tickets WHERE UserID = '"+user_id+"' and IsUsed = 0";
+         let already_participated_query = "SELECT * FROM tickets WHERE EventId = '"+y.eventID+"' and IsUsed = 1 and userID = '"+user_id+"'";
          
-         if(isPresent.length > 0)
-            res.send("Already Participated");
-         else{
-            con.query(ticket_query, (err, rows) => {
-               if(err) throw err;
-               
-               if(rows.length == 0)
-                  res.send("noTicket")
-               else{
-                  var ticket_id = rows[0].TicketID
-                  var update_query = "UPDATE tickets SET IsUsed = 1, EventId = '"+y.eventID+"' WHERE TicketID = '"+ticket_id+"'";
-                  con.query(update_query, (err, data) => {
-                     if(err) throw err;
+         con.query(already_participated_query, (err, isPresent) => {
+            if(err) throw err;
             
-                     res.send("Participated Successfully");
-                  });
-               }
-            });
-         }
-      });
+            if(isPresent.length > 0)
+               res.send("Already Participated");
+            else{
+               con.query(ticket_query, (err, rows) => {
+                  if(err) throw err;
+                  
+                  if(rows.length == 0)
+                     res.send("noTicket")
+                  else{
+                     var ticket_id = rows[0].TicketID
+                     var update_query = "UPDATE tickets SET IsUsed = 1, EventId = '"+y.eventID+"' WHERE TicketID = '"+ticket_id+"'";
+                     con.query(update_query, (err, data) => {
+                        if(err) throw err;
+               
+                        res.send("Participated Successfully");
+                     });
+                  }
+               });
+            }
+         });
+      }
    });
 })
 
